@@ -1,8 +1,10 @@
 import { getToken } from "./authStorage";
 
-// calls backend through CRA proxy
+const API_BASE =
+  process.env.REACT_APP_API_URL || ""; // في dev ينجم يبقى فارغ (نستعمل proxy)
+
 export async function api(path, { method = "GET", body, params } = {}) {
-  const url = new URL(path, window.location.origin);
+  const url = new URL(`${API_BASE}${path}`);
 
   if (params) {
     Object.entries(params).forEach(([k, v]) => {
@@ -24,9 +26,6 @@ export async function api(path, { method = "GET", body, params } = {}) {
   const text = await res.text().catch(() => "");
   const data = text ? JSON.parse(text) : {};
 
-  if (!res.ok) {
-    throw new Error(data.message || `API ${res.status}`);
-  }
-
+  if (!res.ok) throw new Error(data.message || `API ${res.status}`);
   return data;
 }
