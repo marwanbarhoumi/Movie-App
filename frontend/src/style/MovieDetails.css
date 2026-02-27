@@ -1,0 +1,412 @@
+/* =================================== */
+/* MovieDetails.css - صفحة تفاصيل الفيلم */
+/* كل الكلاسات تبدأ بـ .movie-details-page */
+/* =================================== */
+
+.movie-details-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
+  color: white;
+  padding: 2rem 4%;
+  padding-top: calc(70px + 2rem);
+}
+
+/* ===== حاوية الصفحة ===== */
+.movie-details-page .details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== بطاقة الفيلم الرئيسية ===== */
+.movie-details-page .movie-details {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ===== صورة الفيلم ===== */
+.movie-details-page .movie-poster {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.movie-details-page .movie-poster:hover {
+  transform: scale(1.02);
+}
+
+.movie-details-page .movie-poster img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.movie-details-page .movie-poster::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+/* ===== معلومات الفيلم ===== */
+.movie-details-page .movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.movie-details-page .movie-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+  background: linear-gradient(to right, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+/* ===== البيانات الأساسية ===== */
+.movie-details-page .movie-meta {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.movie-details-page .movie-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.movie-details-page .movie-rating span {
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.movie-details-page .movie-release {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== زر المفضلة ===== */
+.movie-details-page .favorite-btn {
+  padding: 1rem 2rem;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 0.5rem 0;
+  letter-spacing: 0.5px;
+}
+
+.movie-details-page .favorite-btn.fav {
+  background: #e50914;
+  color: white;
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+}
+
+.movie-details-page .favorite-btn.fav:hover {
+  background: #f40612;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+}
+
+.movie-details-page .favorite-btn.not-fav {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.movie-details-page .favorite-btn.not-fav:hover {
+  background: rgba(229, 9, 20, 0.2);
+  border-color: #e50914;
+  transform: translateY(-3px);
+}
+
+/* ===== وصف الفيلم ===== */
+.movie-details-page .movie-overview {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e5e5e5;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border-left: 4px solid #e50914;
+  backdrop-filter: blur(5px);
+}
+
+/* ===== معلومات إضافية ===== */
+.movie-details-page .movie-extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-details-page .extra-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.movie-details-page .extra-item:hover {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: rgba(229, 9, 20, 0.3);
+  transform: translateY(-2px);
+}
+
+.movie-details-page .extra-label {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.movie-details-page .extra-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* ===== حالات التحميل والخطأ ===== */
+.movie-details-page .loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1.5rem;
+}
+
+.movie-details-page .loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(229, 9, 20, 0.1);
+  border-top-color: #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.movie-details-page .loading-text {
+  color: #e5e5e5;
+  font-size: 1.2rem;
+}
+
+.movie-details-page .error-box,
+.movie-details-page .empty-box {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(229, 9, 20, 0.1);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 16px;
+  margin: 3rem auto;
+  max-width: 500px;
+  backdrop-filter: blur(10px);
+}
+
+.movie-details-page .error-box {
+  color: #e50914;
+  font-size: 1.1rem;
+}
+
+.movie-details-page .empty-box {
+  color: #999;
+}
+
+.movie-details-page .home-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.movie-details-page .home-link:hover {
+  background: #e50914;
+  border-color: #e50914;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+/* ===== أنيميشن ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (max-width: 900px) {
+  .movie-details-page .movie-details {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .movie-details-page .movie-poster {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .movie-details-page .movie-title {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .movie-details-page .movie-meta {
+    justify-content: center;
+  }
+
+  .movie-details-page .favorite-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .movie-details-page .movie-overview {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-details-page {
+    padding: 1rem 4%;
+    padding-top: calc(60px + 1rem);
+  }
+
+  .movie-details-page .movie-details {
+    padding: 1.2rem;
+  }
+
+  .movie-details-page .movie-poster {
+    max-width: 200px;
+  }
+
+  .movie-details-page .movie-title {
+    font-size: 1.8rem;
+  }
+
+  .movie-details-page .movie-meta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .movie-details-page .movie-rating,
+  .movie-details-page .movie-release {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .movie-details-page .movie-overview {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
+
+  .movie-details-page .movie-extras {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-details-page .extra-item {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .movie-details-page .movie-title {
+    font-size: 1.5rem;
+  }
+
+  .movie-details-page .favorite-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .movie-details-page .movie-poster {
+    max-width: 160px;
+  }
+}
+
+/* ===== دعم اللغة العربية ===== */
+[lang="ar"] .movie-details-page .movie-details {
+  direction: rtl;
+}
+
+[lang="ar"] .movie-details-page .movie-overview {
+  border-left: none;
+  border-right: 4px solid #e50914;
+  text-align: right;
+}
+
+[lang="ar"] .movie-details-page .movie-meta {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .movie-details-page .extra-item {
+  text-align: right;
+}

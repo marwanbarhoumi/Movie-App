@@ -1,0 +1,383 @@
+
+/* =================================== */
+/* Favorites.css - صفحة المفضلة */
+/* تصميم أنيق لعرض الأفلام المفضلة */
+/* =================================== */
+
+.favorites-page {
+  min-height: 100vh;
+  background-color: #141414;
+  color: white;
+  padding: 2rem 4% 4rem;
+}
+
+/* ===== رأس الصفحة ===== */
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.favorites-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(to right, #fff, #e5e5e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.favorites-header h1::before {
+  content: '★';
+  color: #ffd700;
+  margin-right: 10px;
+  font-size: 2rem;
+  -webkit-text-fill-color: #ffd700;
+}
+
+/* ===== عداد الأفلام ===== */
+.items-count {
+  background: rgba(229, 9, 20, 0.2);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  color: #e50914;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(5px);
+}
+
+.items-count span {
+  color: white;
+  background: #e50914;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+/* ===== زر تصفية ===== */
+.filter-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #999;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: #e50914;
+  color: white;
+}
+
+.filter-btn.active {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+}
+
+/* ===== حالة عدم وجود مفضلة ===== */
+.empty-favorites {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 500px;
+  margin: 3rem auto;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+}
+
+.empty-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.empty-favorites h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.empty-favorites p {
+  color: #999;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.browse-btn {
+  display: inline-block;
+  background: #e50914;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.browse-btn:hover {
+  background: #f40612;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+}
+
+/* ===== شبكة الأفلام المفضلة ===== */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+/* ===== إحصائيات سريعة ===== */
+.favorites-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e50914;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  color: #999;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== خيارات إضافية ===== */
+.favorites-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.action-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #999;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn:hover {
+  border-color: #e50914;
+  color: white;
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.action-btn.danger:hover {
+  border-color: #e50914;
+  background: rgba(229, 9, 20, 0.2);
+  color: #e50914;
+}
+
+/* ===== أنيميشن ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (max-width: 900px) {
+  .favorites-page {
+    padding: 1.5rem 4% 3rem;
+  }
+
+  .favorites-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .favorites-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .favorites-header h1::before {
+    font-size: 1.6rem;
+  }
+
+  .filter-options {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .filter-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .favorites-page {
+    padding: 1rem 4% 2rem;
+  }
+
+  .favorites-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .items-count {
+    padding: 0.3rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+
+  .empty-favorites {
+    padding: 3rem 1.5rem;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+  }
+
+  .empty-favorites h2 {
+    font-size: 1.5rem;
+  }
+
+  .empty-favorites p {
+    font-size: 1rem;
+  }
+
+  .browse-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .favorites-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== دعم اللغة العربية ===== */
+[lang="ar"] .favorites-header {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .header-left {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .favorites-header h1::before {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+[lang="ar"] .items-count span {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+[lang="ar"] .filter-options {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .favorites-actions {
+  justify-content: flex-start;
+}

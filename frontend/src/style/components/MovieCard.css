@@ -1,0 +1,193 @@
+/* ===== MovieCard.css ===== */
+/* نسخة موحدة ومتسقة */
+
+.movie-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== البطاقة موحدة الحجم ===== */
+.movie-card {
+  position: relative;
+  width: 100%;
+  height: 100%; /* نفس الارتفاع */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a1a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card-link:hover .movie-card {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(229, 9, 20, 0.3);
+  z-index: 10;
+}
+
+/* ===== حاوية الصورة موحدة ===== */
+.movie-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3; /* نسبة ثابتة 2:3 */
+  overflow: hidden;
+  background: #0a0a0a; /* خلفية موحدة */
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تغطية كاملة */
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.movie-card-link:hover .movie-poster img {
+  transform: scale(1.08);
+}
+
+/* ===== الطبقة الشفافة موحدة ===== */
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, 
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.7) 50%,
+    rgba(0,0,0,0.3) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card-link:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-title-overlay {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  transform: translateY(15px);
+  transition: transform 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-card-link:hover .movie-title-overlay {
+  transform: translateY(0);
+}
+
+.movie-rating {
+  color: #ffd700;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transform: translateY(15px);
+  transition: transform 0.3s ease 0.1s;
+}
+
+.movie-card-link:hover .movie-rating {
+  transform: translateY(0);
+}
+
+/* ===== قسم المعلومات السفلية موحد ===== */
+.movie-info {
+  padding: 0.7rem;
+  background: #1a1a1a;
+  flex: 1; /* ياخد المساحة المتبقية */
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.movie-title {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  margin-top: auto; /* يدفع للأسفل */
+}
+
+.movie-year {
+  color: #999;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.movie-rating-small {
+  color: #ffd700;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+}
+
+/* ===== تأكيد توحيد الأحجام في Home.css ===== */
+/* أضف هذا في Home.css إذا لم يكن موجوداً */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem 4% 3rem 4%;
+  align-items: stretch; /* كل البطاقات نفس الارتفاع */
+}
+
+/* ===== للشاشات الصغيرة ===== */
+@media (max-width: 600px) {
+  .movie-info {
+    padding: 0.5rem;
+  }
+  
+  .movie-title {
+    font-size: 0.75rem;
+  }
+  
+  .movie-meta {
+    font-size: 0.65rem;
+  }
+  
+  .movie-year {
+    padding: 2px 6px;
+  }
+  
+  .movie-overlay {
+    padding: 0.8rem;
+  }
+  
+  .movie-title-overlay {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== دعم العربية ===== */
+[lang="ar"] .movie-meta {
+  flex-direction: row-reverse;
+}

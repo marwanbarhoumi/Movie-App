@@ -1,0 +1,470 @@
+/* =================================== */
+/* Search.css - صفحة البحث */
+/* تصميم أنيق وعملي */
+/* =================================== */
+
+.search-page {
+  min-height: 100vh;
+  background-color: #141414;
+  color: white;
+  padding: 2rem 4% 4rem;
+}
+
+/* ===== رأس صفحة البحث ===== */
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(to right, #fff, #e5e5e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.search-header h1::before {
+  content: '🔍';
+  margin-right: 10px;
+  font-size: 2rem;
+  -webkit-text-fill-color: #e50914;
+}
+
+/* ===== معلومات البحث ===== */
+.search-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.search-info b {
+  color: #e50914;
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.search-info .page-indicator {
+  background: #e50914;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+  font-size: 0.9rem;
+}
+
+/* ===== شريط البحث المتقدم ===== */
+.search-bar-advanced {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+  border-radius: 50px;
+  padding: 0.3rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  backdrop-filter: blur(10px);
+}
+
+.search-bar-advanced input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-bar-advanced input::placeholder {
+  color: #666;
+}
+
+.search-bar-advanced button {
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 5px;
+}
+
+.search-bar-advanced button:hover {
+  background: #f40612;
+  transform: scale(1.02);
+}
+
+/* ===== حالة عدم وجود بحث ===== */
+.empty-search {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 500px;
+  margin: 3rem auto;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+}
+
+.empty-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.empty-search h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.empty-search p {
+  color: #999;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.popular-searches {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.popular-search-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #999;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.popular-search-tag:hover {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ===== حالة عدم وجود نتائج ===== */
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  margin: 2rem 0;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.no-results-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.no-results h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: white;
+}
+
+.no-results p {
+  color: #999;
+  font-size: 1rem;
+}
+
+/* ===== شبكة نتائج البحث ===== */
+.search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  animation: fadeIn 0.5s ease;
+}
+
+/* ===== أزرار التنقل بين الصفحات ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 3rem 0 1rem;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #e50914;
+  border-color: #e50914;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  color: #e5e5e5;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pagination-info b {
+  color: #e50914;
+  margin: 0 5px;
+}
+
+/* ===== مؤشر التحميل ===== */
+.search-loading {
+  text-align: center;
+  padding: 4rem;
+  color: #666;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-spinner-small {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(229, 9, 20, 0.1);
+  border-top-color: #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== رسالة الخطأ ===== */
+.search-error {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(229, 9, 20, 0.1);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 12px;
+  margin: 2rem 0;
+  color: #e50914;
+  font-size: 1.1rem;
+}
+
+/* ===== أنيميشن ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (max-width: 900px) {
+  .search-page {
+    padding: 1.5rem 4% 3rem;
+  }
+
+  .search-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .search-header h1::before {
+    font-size: 1.6rem;
+  }
+
+  .search-results-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-page {
+    padding: 1rem 4% 2rem;
+  }
+
+  .search-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .search-info {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem;
+  }
+
+  .search-bar-advanced {
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    gap: 0.5rem;
+  }
+
+  .search-bar-advanced input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .search-bar-advanced button {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .search-results-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+
+  .pagination {
+    gap: 1rem;
+  }
+
+  .pagination-btn {
+    padding: 0.6rem 1.2rem;
+    min-width: 80px;
+    font-size: 0.9rem;
+  }
+
+  .pagination-info {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .empty-search {
+    padding: 3rem 1.5rem;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+  }
+
+  .empty-search h2 {
+    font-size: 1.5rem;
+  }
+
+  .empty-search p {
+    font-size: 1rem;
+  }
+
+  .popular-searches {
+    gap: 0.5rem;
+  }
+
+  .popular-search-tag {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .search-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pagination {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .pagination-btn {
+    width: 100%;
+  }
+
+  .pagination-info {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ===== دعم اللغة العربية ===== */
+[lang="ar"] .search-header {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .search-header h1::before {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+[lang="ar"] .search-info .page-indicator {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+[lang="ar"] .search-bar-advanced {
+  flex-direction: row-reverse;
+}
+
+[lang="ar"] .search-bar-advanced button {
+  margin-right: 0;
+  margin-left: 5px;
+}
+
+[lang="ar"] .pagination-btn svg {
+  transform: rotate(180deg);
+}

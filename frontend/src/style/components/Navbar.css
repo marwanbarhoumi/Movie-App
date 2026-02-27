@@ -1,0 +1,216 @@
+/* =================================== */
+/* Navbar.css - شريط التنقل البسيط */
+/* =================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.9) 90%);
+  z-index: 9999;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== القسم الأيسر ===== */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  color: #e50914;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+/* ===== القسم الأيمن ===== */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ===== البحث ===== */
+.search-form {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.search-form input {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  width: 180px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.search-form input::placeholder {
+  color: #999;
+}
+
+.search-form button {
+  background: transparent;
+  border: none;
+  color: #999;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.search-form button:hover {
+  color: white;
+}
+
+/* ===== محدد اللغة ===== */
+.lang-switcher {
+  display: flex;
+  gap: 5px;
+}
+
+.lang-switcher button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #999;
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-switcher button.active {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+}
+
+.lang-switcher button:hover:not(.active) {
+  border-color: white;
+  color: white;
+}
+
+/* ===== المستخدم ===== */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-menu span {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.user-menu button {
+  background: rgba(229,9,20,0.2);
+  border: 1px solid rgba(229,9,20,0.3);
+  color: #e50914;
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.user-menu button:hover {
+  background: #e50914;
+  color: white;
+}
+
+.login-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 4px 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.login-link:hover {
+  border-color: #e50914;
+  color: #e50914;
+}
+
+/* ===== تعديل الـ body ===== */
+body {
+  margin: 0;
+  padding-top: 60px;
+  background: #141414;
+  color: white;
+}
+
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (max-width: 900px) {
+  .search-form input {
+    width: 140px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  body {
+    padding-top: 100px;
+  }
+  
+  .nav-left, .nav-right {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links {
+    gap: 10px;
+  }
+  
+  .search-form input {
+    width: 100px;
+  }
+}
