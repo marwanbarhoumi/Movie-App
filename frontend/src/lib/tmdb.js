@@ -1,37 +1,28 @@
 // src/lib/tmdb.js
-// Frontend API wrapper -> calls your Express backend endpoints (/api/*)
-// Works with CRA proxy: add in frontend/package.json => "proxy": "http://localhost:5000"
-
 const IMG = "https://image.tmdb.org/t/p";
+export const imgUrl = (path, size = "w500") => (path ? `${IMG}/${size}${path}` : "");
 
-// image helper (TMDB provides images via this base url)
-export const imgUrl = (path, size = "w500") =>
-  path ? `${IMG}/${size}${path}` : "";
-
-// generic request helper
 async function api(path, params = {}) {
-  // CRA proxy will forward /api/* to backend
-  const url = new URL(path, window.location.origin);
+  // ✅ لازم path يبدأ بـ /
+  const p = path.startsWith("/") ? path : `/${path}`;
 
+  // ✅ نبني query string بطريقة آمنة
+  const qs = new URLSearchParams();
   Object.entries(params).forEach(([k, v]) => {
-    if (v !== undefined && v !== null && `${v}` !== "") {
-      url.searchParams.set(k, v);
-    }
+    if (v !== undefined && v !== null && `${v}` !== "") qs.set(k, v);
   });
 
-  const res = await fetch(url.toString());
+  const url = `${p}${qs.toString() ? `?${qs.toString()}` : ""}`;
+
+  const res = await fetch(url); // relative URL -> يروح للـ proxy
   const text = await res.text().catch(() => "");
-  const data = text ? JSON.parse(text) : {};
+  let data = {};
+  try { data = text ? JSON.parse(text) : {}; } catch { data = { message: text?.slice(0, 120) }; }
 
-  if (!res.ok) {
-    // backend returns { message, status }
-    throw new Error(data.message || `API ${res.status}`);
-  }
-
+  if (!res.ok) throw new Error(data.message || `API ${res.status}`);
   return data;
 }
 
-// Movies
 export const getTrending = (language = "fr-FR") =>
   api("/api/trending", { lang: language });
 
