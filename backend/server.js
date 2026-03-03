@@ -42,7 +42,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 // ✅ مهم للـ preflight
-app.options("*", cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 
 /* =========================
    Middlewares
